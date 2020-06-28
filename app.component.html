@@ -1,0 +1,38 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+    </head>
+    <body>
+        <nav>
+            <div class="logo">
+                <a routerLink="/"><h2>THE CINSIDER</h2></a>
+            </div>
+            <ul class="nav-links" [class.nav-active]="status">
+                <li class="times">
+                    <button type="submit" class="searchButton">
+                        <i class="fa fa-times"></i>
+                  </button>
+                </li>
+                <li class="search">
+                    <input type="text" placeholder="Search..." [(ngModel)]="text" (click)="onSearch()">
+                    <button type="submit" class="searchButton" routerLink="/searchList/{{text}}" (click)="onText()">
+                          <i class="fa fa-search"></i>
+                    </button>
+                </li>
+                <li><a routerLink="/productBased" routerLinkActive="active">ProductBased</a></li>
+                <li><a routerLink="/serviceBased" routerLinkActive="active">ServiceBased</a></li>
+            </ul>
+            <div class="burger"  (click)="onBurger()">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
+        </nav>
+        <div>
+            <router-outlet></router-outlet>
+        </div>
+        <!-- <app-lander></app-lander>
+        <app-news></app-news>
+        <app-reviews></app-reviews> -->
+    </body>
+</html>
