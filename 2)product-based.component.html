@@ -30,20 +30,23 @@
 
 <!-- code for product-based.component.ts -->
 
-sortby: string = 'ranking';
-  productArray: any
-  _id: any;
-  constructor(private http: HttpClient, private global: CompanyService) { }
-  ngOnInit(): void {
-    const purl = 'http://localhost:3000/pBased';
-    this.http.get(purl).subscribe((res)=>{
-      this.productArray = res;
-      console.log(this.productArray[0]._id)
-    })
-  }
-  onSelected(status: string){
-    this.sortby = status;
-  }
-  onSelectedProduct(_id: any){
-    this.global.change(_id);
-    console.log("SELECTED")
+export class ProductBasedComponent implements OnInit{
+    sortby: string = 'ranking';
+      productArray: any
+      _id: any;
+      constructor(private http: HttpClient, private global: CompanyService) { }
+      ngOnInit(): void {
+        const purl = 'http://localhost:3000/pBased';
+        this.http.get(purl).subscribe((res)=>{
+          this.productArray = res;
+          console.log(this.productArray[0]._id)
+        })
+      }
+      onSelected(status: string){
+        this.sortby = status;
+      }
+      onSelectedProduct(_id: any){
+        this.global.change(_id);
+        console.log("SELECTED")
+    }
+}
