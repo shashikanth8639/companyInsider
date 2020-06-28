@@ -30,20 +30,23 @@
 
 <!-- code for service-based.component.ts -->
 
-sortby: string = 'ranking';
-  serviceArray: any
-  _id: any;
-  constructor(private http: HttpClient, private global: CompanyService) { }
-  ngOnInit(): void {
-    const purl = 'http://localhost:3000/pBased';
-    this.http.get(purl).subscribe((res)=>{
-      this.serviceArray = res;
-      console.log(this.productArray[0]._id)
-    })
-  }
-  onSelected(status: string){
-    this.sortby = status;
-  }
-  onSelectedService(_id: any){
-    this.global.change(_id);
-    console.log("SELECTED")
+export class ServiceBasedComponent implements OnInit{
+    sortby: string = 'ranking';
+      serviceArray: any
+      _id: any;
+      constructor(private http: HttpClient, private global: CompanyService) { }
+      ngOnInit(): void {
+        const purl = 'http://localhost:3000/pBased';
+        this.http.get(purl).subscribe((res)=>{
+          this.serviceArray = res;
+          console.log(this.productArray[0]._id)
+        })
+      }
+      onSelected(status: string){
+        this.sortby = status;
+      }
+      onSelectedService(_id: any){
+        this.global.change(_id);
+        console.log("SELECTED")
+    }
+}
