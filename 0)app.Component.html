@@ -32,10 +32,13 @@
 
 
 <!---code for app.component.ts-->
-title = 'cinsider1';
-status: boolean = false;
+
+export class AppComponent implements OnInit{
+    title = 'cinsider1';
+    status: boolean = false;
     constructor(private global:CompanyService){}
 
     onText(){
         this.global.searchName(this.text);
     }
+}
