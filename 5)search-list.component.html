@@ -14,7 +14,7 @@
 
 
 <!-- code for search-list.component.ts -->
-
+export class SearchListComponent implements OnInit{
 sname: string
   searchArray: any
   constructor(private http:HttpClient, private global: CompanyService) { }
@@ -31,3 +31,5 @@ sname: string
   onSelectedSearch(id: any){
     this.global.change(id);
   }
+
+}
