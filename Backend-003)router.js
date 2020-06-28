@@ -1,8 +1,4 @@
-const express = require('express')
-
-const Company = require('../models/company')
-
-const router = express.Router()
+//code for routes 
 
 router.post('/companies', async(req,res)=>{
     const company = new Company(req.body)
@@ -63,48 +59,6 @@ router.get('/companies', async(req,res)=>{
     const companies = await Company.find({})
     res.send(companies)
 })
+)
 
-// router.get('/companies', async (req,res)=>{
-    // const match =  {}
-    // const sort = {}
-    // if(req.query.completed){
-    //     match.completed = req.query.completed==='true'
-    // }
-    // if(req.query.sortBy){
-    //     const parts = req.query.sortBy.split(':')
-    //     sort[parts[0]] = parts[1]==='desc'? -1: 1
-    // }
-    // try{
-        // const tasks = await Task.find({})
-        // const tasks = await Task.find({author:req.user._id})
-        // await req.user.populate('tasks').execPopulate()
-        // await req.user.populate({
-        //     path:'companies',
-        //     match,
-        //     options:{
-        //         // limit:2,
-        //         limit: parseInt(req.query.limit),
-        //         skip:parseInt(req.query.skip),
-        //         sort
-        //     }
-        // }).execPopulate()
-        // res.send(tasks)
-        // res.send(req.user.tasks)
-//     }catch(e){
-//         res.status(500).send(e)
-//     }
-// })
-router.delete('/:id', async (req,res)=>{
-    try{
-        // const task = await Task.findByIdAndDelete(req.params.id)
-        const company = await Company.findOneAndDelete({_id:req.params.id}) 
-        if(!company){
-            return res.status(404).send()
-        }
-        res.send(task)
-    }catch(e){
-        res.status(400).send(e)
-    }
-})
 
-module.exports = router
