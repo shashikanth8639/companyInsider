@@ -1,0 +1,33 @@
+
+<!-- code for displaying ssearched companies  -->
+<html>
+    <head></head>
+    <body>
+        <h2>Searched Results..</h2>
+        <div class="container">
+            <div *ngFor="let search of searchArray" class="card">
+                <a [(ng-model)]="search._id" routerLink="/company/{{search.name}}" (click)="onSelectedSearch(search._id)"><img src="{{search.imageLink}}" alt="{{search.name}}"></a>
+            </div>`
+        </div>
+    </body>
+</html>
+
+
+<!-- code for search-list.component.ts -->
+
+sname: string
+  searchArray: any
+  constructor(private http:HttpClient, private global: CompanyService) { }
+
+  ngOnInit(): void {
+    this.sname = this.global.name;
+    const surl = 'http://localhost:3000/searchList/'+this.sname;
+    this.http.get(surl).subscribe(res=>{
+      this.searchArray = res;
+      console.log(this.searchArray);
+    })
+  }
+
+  onSelectedSearch(id: any){
+    this.global.change(id);
+  }
