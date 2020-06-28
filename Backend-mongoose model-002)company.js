@@ -1,3 +1,4 @@
+//mogoose database model for company storage in mogodb
 const mongoose = require('mongoose')
 
 const companySchema = new mongoose.Schema({
