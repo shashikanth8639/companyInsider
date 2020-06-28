@@ -15,14 +15,16 @@
 
 <!-- code for lander.component.ts -->
 
-constructor( private http: HttpClient, private global: CompanyService){}
-    companyArray: any
-    ngOnInit(){
-        this.http.get('http://localhost:3000/lander')
-            .subscribe(res=>{
-                this.companyArray = res;
-            })
-    }
-    onSelectedCompany(id: any){
-        this.global.change(id);
-    }
+export class LanderComponent implements OnInit{
+    constructor( private http: HttpClient, private global: CompanyService){}
+        companyArray: any
+        ngOnInit(){
+            this.http.get('http://localhost:3000/lander')
+                .subscribe(res=>{
+                    this.companyArray = res;
+                })
+        }
+        onSelectedCompany(id: any){
+            this.global.change(id);
+        }
+}
