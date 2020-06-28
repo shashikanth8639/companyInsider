@@ -1,0 +1,41 @@
+<!-- starting page of the app... code is about navbar , below the navbar consists of dynamic replacable componenets according to routes-->
+<body>
+    <nav>
+        <div class="logo">
+            <a routerLink="/"><h2>THE CINSIDER</h2></a>
+        </div>
+        <ul class="nav-links" [class.nav-active]="status">
+            <li class="times">
+                <button type="submit" class="searchButton">
+                    <i class="fa fa-times"></i>
+              </button>
+            </li>
+            <li class="search">
+                <input type="text" placeholder="Search..." [(ngModel)]="text" (click)="onSearch()">
+                <button type="submit" class="searchButton" routerLink="/searchList/{{text}}" (click)="onText()">
+                      <i class="fa fa-search"></i>
+                </button>
+            </li>
+            <li><a routerLink="/productBased" routerLinkActive="active">ProductBased</a></li>
+            <li><a routerLink="/serviceBased" routerLinkActive="active">ServiceBased</a></li>
+        </ul>
+        <div class="burger"  (click)="onBurger()">
+            <div class="line1"></div>
+            <div class="line2"></div>
+            <div class="line3"></div>
+        </div>
+    </nav>
+    <div>
+        <router-outlet></router-outlet>
+    </div>
+</body>
+
+
+<!---code for appcomponent.ts-->
+title = 'cinsider1';
+status: boolean = false;
+    constructor(private global:CompanyService){}
+
+    onText(){
+        this.global.searchName(this.text);
+    }
