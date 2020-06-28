@@ -1,0 +1,32 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+    </head>
+    <body>
+        <div class="wrapper">
+            <div class="tag">
+                <h2>Service Based Companies</h2>
+            </div>
+            <div class="sort">
+                <div class="tag">
+                    <h4>SortBy :</h4>
+                </div>
+                <div class="dropdown">
+                    <button class="dropbtn">{{sortby}}&nbsp;&nbsp;<span><i class="fa fa-caret-down"></i></span></button>
+                    <div class="dropdown-content">
+                        <a class="links" (click)="onSelected('ranking')" routerLink="/serviceBased">ranking</a>
+                        <a class="links" (click)="onSelected('rating')" routerLink="/serviceBased">rating</a>
+                        <a class="links" (click)="onSelected('view-count')" routerLink="/serviceBased">view-count</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="container">
+            <div *ngFor="let service of serviceArray" class="card">
+                <!-- <a href="http://localhost:3000/serviceBased/{{service._id}}"><img src="{{service.imageLink}}" alt="{{service.name}}"></a> -->
+                <a [(ng-model)]="service._id" routerLink="/company/{{service.name}}" (click)="onSelectedService(service._id)"><img src="{{service.imageLink}}" alt="{{service.name}}"></a>
+            </div>`
+        </div>
+    </body>
+</html>

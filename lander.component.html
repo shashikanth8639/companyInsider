@@ -1,0 +1,17 @@
+<html>
+    <head></head>
+    <body>
+        <div class="lander">
+            <h2>your future vision our unknown expeditions. </h2>
+        </div>
+        <!-- <app-news></app-news> -->
+        <!-- <app-company></app-company> -->
+        <!-- <app-news></app-news> -->
+        <div class="container">
+            <div *ngFor="let company of companyArray" class="card" >
+                <!-- <a href="http://localhost:3000/productBased/{{product._id}}"><img src="{{product.imageLink}}" alt="{{product.name}}"></a> -->
+                <a [(ng-model)]="company._id" routerLink="company/{{company.name}}" (click)="onSelectedCompany(company._id)"><img src="{{company.imageLink}}" alt="{{company.name}}" ></a>
+            </div>
+        </div>
+    </body>
+</html>

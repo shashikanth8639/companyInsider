@@ -1,0 +1,52 @@
+<html>
+    <head></head>
+    <body>
+        <!-- <div class="container">
+            <div class="news-content">
+                <app-news></app-news>
+            </div> -->
+        <div class="company-info">
+            <h2>{{company.name}}</h2>
+            <div class="description">
+                <p>{{company.description}}</p>
+            </div>
+            <h3>Key People</h3>
+            <div class="keyPeople">
+                <ul>
+                    <li *ngFor="let person of company.keyPeople | keyvalue">{{ person.value }} - {{ person.key }}</li>
+                </ul>
+            </div>
+            <h3>HeadQuarters</h3>
+            <div>
+                <p>{{company.headQuarters}}</p>
+            </div>
+            <h3>Achievements</h3>
+            <div>
+                <ul>
+                    <li *ngFor="let ac of company.achievements">{{ ac }}</li>
+                </ul>
+            </div>
+            <h3>Company official link</h3>
+            <div>
+                <a href="{{ company.companyLink }}" target="_blank">{{ company.companyLink }}</a>
+            </div>
+            <h3 *ngIf="company.interviewExperience.length!=0">Interview experience Links </h3>
+            <div>
+                <ul>
+                    <li *ngFor="let link of company.interviewExperience"><a href="{{link}}" target="_blank">{{link}}</a></li>
+                </ul>
+            </div>
+            <h3>Rating</h3>
+            <div>
+                <ul>
+                    <li *ngFor="let ct of category | keyvalue"><a href="{{ct.value}}" target="_blank">{{ct.key}}</a></li>
+                </ul>
+            </div>
+            <h3>Revenue</h3>
+            <div>
+                <p>{{company.revenue}}</p>
+            </div>
+        </div>
+        <!-- </div> -->
+    </body>
+</html>

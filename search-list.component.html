@@ -1,0 +1,11 @@
+<html>
+    <head></head>
+    <body>
+        <h2>Searched Results..</h2>
+        <div class="container">
+            <div *ngFor="let search of searchArray" class="card">
+                <a [(ng-model)]="search._id" routerLink="/company/{{search.name}}" (click)="onSelectedSearch(search._id)"><img src="{{search.imageLink}}" alt="{{search.name}}"></a>
+            </div>`
+        </div>
+    </body>
+</html>
