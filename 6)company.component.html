@@ -1,5 +1,6 @@
-<html>
-    <head></head>
+
+<!-- code for displaying companieswhen user clicks on logo -->
+
     <body>
         <!-- <div class="container">
             <div class="news-content">
@@ -49,4 +50,37 @@
         </div>
         <!-- </div> -->
     </body>
-</html>
+<!-- code for company.component.ts -->
+ export class CompanyComponent implements OnInit {
+   _id: any
+  company: object
+  category: any 
+  cname: string = 'V'
+  constructor(private http: HttpClient, private global: CompanyService ){ }
+
+  ngOnInit(): void {
+    this._id = this.global.getId();
+    console.log(this._id);
+    console.log('*******');
+    const url = 'http://localhost:3000/company/'+this._id;
+    console.log(url);
+    console.log('happu');
+    this.http.get(url).subscribe((res)=>{
+      this.company=res;
+      this.cname = this.company.name;
+      console.log(this.cname);
+      // console.log(this.company.keyPeople);
+      this.calRating();
+    });
+  }
+  calRating(){
+    const rurl = 'http://localhost:3000/rating/'+this.cname.toLowerCase();
+    console.log(rurl);
+    this.http.get(rurl).subscribe(res=>{
+      this.category=res;
+      console.log(this.category);
+    });
+  }
+  
+
+}
